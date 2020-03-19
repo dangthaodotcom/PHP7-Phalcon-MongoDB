@@ -1,0 +1,51 @@
+version: '3'
+
+networks:
+  proxy:
+      external: true
+  site:
+      external: true
+
+services:
+
+  php:
+    container_name: 'PHP'
+    build:
+      context: php-fpm/7-stable
+    volumes:
+      - ./src:/var/www/html
+      - ./php-fpm/7-stable/php.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/7-stable/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    expose:
+      - "9000"
+
+  nginx:
+    image: 'nginx'
+    container_name: 'Nginx'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/sites:/etc/nginx/sites-available
+      - ./nginx/logs:/var/log/nginx
+    ports:
+      - "80:80"
+
+  database:
+    image: 'mongo'
+    container_name: 'MongoDB'
+    environment:
+      - MONGO_INITDB_DATABASE=test 
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+      - ./mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+#
+#  redis:
+#    build:
+#      context: ./redis
+#    volumes:
+#      - ./redis/data:/data
+#    ports:
+#      - "6379:6379"

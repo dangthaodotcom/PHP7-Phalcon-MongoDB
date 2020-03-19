@@ -1,0 +1,5 @@
+2020/03/19 07:20:01 [notice] 24#24: signal process started
+2020/03/19 07:20:05 [error] 10#10: *11 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.23.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2020/03/19 07:20:06 [error] 10#10: *11 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.23.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2020/03/19 07:20:06 [error] 10#10: *11 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.23.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2020/03/19 07:20:06 [error] 10#10: *11 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.23.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
